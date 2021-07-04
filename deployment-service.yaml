@@ -1,0 +1,47 @@
+#Build for loadbalance test for Volterra.io
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: web-client
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-client
+  template:
+    metadata:
+      labels:
+        app: web-client
+    spec:
+      containers:
+        - name: web-client
+          image: risyou/k8s-web-client
+          ports:
+            - containerPort: 80
+          env:
+          - name: kube_namespace
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: kube_service_account
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.serviceAccountName
+          - name: kube_node_name
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-client
+  labels:
+    app: web-client
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: web-client
