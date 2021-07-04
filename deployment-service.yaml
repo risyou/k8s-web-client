@@ -17,7 +17,7 @@ spec:
         - name: web-client
           image: risyou/k8s-web-client
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           env:
           - name: kube_namespace
             valueFrom:
@@ -41,7 +41,7 @@ metadata:
 spec:
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: 8080
     protocol: TCP
   selector:
     app: web-client
