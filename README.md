@@ -1,15 +1,17 @@
 
-# NGINX server which shows hostname, IP address, port, and k8s other variables
+# NGINX server which shows hostname, IP address, port, and other k8s variables
 
 How to run:
 ```
 $ docker run -p 8080:80 --name web-client risyou/k8s-web-client
 ```
 
-Running with docker will gives you same result as it's origin image - https://github.com/nginxinc/NGINX-Demos/tree/master/nginx-hello
+Running with docker will gives you same result as [here][f5312b53]
+
+  [f5312b53]: https://github.com/nginxinc/NGINX-Demos/tree/master/nginx-hello "nginx-demo-hello"
 
 # Expose k8s running environment
-You can expose k8s metadata into environment variable, if the name start with kube_, it will shows up like this
+You can expose k8s metadata into web by using environment variable start with "kube", check the deployment example below
 
 ![hello](hello.png)
 
@@ -51,4 +53,4 @@ spec:
 
 ```
 
-More information about downward API can be find here - https://kubernetes.io/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/
+For more metadata (downward API) can be find here - https://kubernetes.io/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/
