@@ -56,3 +56,7 @@ spec:
 ```
 
 For more metadata (downward API) can be find here - https://kubernetes.io/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/
+
+Github: - https://github.com/risyou/k8s-web-client
+
+Docker hub: - https://hub.docker.com/repository/docker/risyou/k8s-web-client
