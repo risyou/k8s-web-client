@@ -1,7 +1,7 @@
 FROM nginx:mainline-alpine
 RUN rm /etc/nginx/conf.d/*
 ADD hello.conf /etc/nginx/conf.d/
-ADD 1.html 2.html 3.html /usr/share/nginx/html/
+ADD 1.html 2.html index.html text.html out.txt env.txt /usr/share/nginx/html/
 RUN chown -R nginx:nginx /usr/share/nginx/html/
 EXPOSE 8080
 
